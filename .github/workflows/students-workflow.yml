@@ -1,0 +1,19 @@
+name: Workflow for students # TODO: find a better name
+
+on: 
+  pull_request:
+    branches:
+     - tasks/**
+
+jobs:
+  run-task-checks:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the branch
+        uses: actions/checkout@v2
+      - name: Run the Cake script for tests
+        uses: cake-build/cake-action@v1
+        with:
+          target: TestAndPrintResults
